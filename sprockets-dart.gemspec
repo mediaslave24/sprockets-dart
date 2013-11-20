@@ -11,8 +11,10 @@ Gem::Specification.new do |s|
   s.email = "mmaccoffe@gmail.com"
 
   s.files = %w[
-    Gemfile
+    lib/sprockets-dart.rb
+    lib/sprockets_dart.rb
     README.md
+    LICENSE
     sprockets-dart.gemspec
   ]
 
