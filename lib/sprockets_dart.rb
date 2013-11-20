@@ -1,5 +1,7 @@
+require "tilt"
+
 module Sprockets
-  module DartTemplate
+  class DartTemplate < Tilt::Template
     module Dart
       module Dart2Js
         def self.command; "dart2js" end
