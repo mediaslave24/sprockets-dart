@@ -15,10 +15,8 @@ module Sprockets
 
       class Dart2JsError < Exception; end
 
-      def self.compile(content)
-        dartfile = Tempfile.new("dart")
-        dartfile.write(content)
-        dartfile.close
+      def self.compile(path)
+        dartfile = File.open(path)
         dartpath = dartfile.path
         jspath = "#{dartpath}.js"
 
@@ -30,6 +28,8 @@ module Sprockets
 
         result = IO.read(jspath)
         result
+      ensure
+        dartfile.close
       end
     end
 
@@ -37,7 +37,7 @@ module Sprockets
     end
 
     def evaluate(context, locals, &block)
-      @output ||= Dart.compile(data)
+      @output ||= Dart.compile(file)
     end
   end
 end
